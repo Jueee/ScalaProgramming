@@ -1,0 +1,4 @@
+/.settings/*
+/target/*
+.cache-main
+.cache-tests
