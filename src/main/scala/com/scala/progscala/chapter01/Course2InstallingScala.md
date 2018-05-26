@@ -13,3 +13,5 @@ SBT 会自动下载指定版本的 Scala 编译器、标准库以及需要的第
 ![](https://i.imgur.com/wVin5sb.jpg)</br>
 
 ### 执行 Scala 命令行工具 ###
+如果单独安装了 Scala  命令行工具，会发现与 Java  编译器 javac 相似， Scala  编译器叫作 scalac 。</br>
+在命令行窗口中运行 -version 命令，便可查看到当前运行的 scalac 版本以及命令行参数帮助信息。</br>
