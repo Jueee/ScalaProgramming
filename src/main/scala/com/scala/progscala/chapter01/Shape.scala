@@ -19,7 +19,7 @@ case class Circle(center:Point, radius:Double) extends Shape
 // 矩形：位于左下角的点、高度和宽度这三个属性构成。
 case class Rectangle(lowerLeft:Point, height:Double, width:Double) extends Shape
 
-//  三角形：三个点所构成。
+// 三角形：三个点所构成。
 case class Triangle(point1:Point, point2:Point,point3:Point) extends Shape
 
 
