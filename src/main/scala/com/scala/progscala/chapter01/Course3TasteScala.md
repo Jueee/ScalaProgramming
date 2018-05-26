@@ -18,9 +18,16 @@ defined class HelloClass
 defined object HelloTest</pre>
 
 将脚本文件编译为 JVM 的字节码（一组 .class 文件）：
+-   没有包路径的情况：
 <pre>
-E:\code\Java\workspace48\ScalaProgramming>scalac src/main/scala/com/scala/progsc
-ala/chapter01/HelloClass.scala
+$ scalac src/main/scala/com/scala/progscala/chapter01/HelloClass.scala
 
-E:\code\Java\workspace48\ScalaProgramming>scala HelloTest
+$ scala HelloTest
 ArrayBuffer(HELLO, WORLD)</pre>
+-   有包路径的情况：
+<pre>
+$ scalac src/main/scala/com/scala/progscala/chapter01/HelloClass2.scala
+
+$ scala -cp . com.scala.progscala.chapter01.HelloTest2
+ArrayBuffer(HELLO, WORLD, TEST)</pre>
+【注】通过选项 -cp . 将当前目录添加到查询类路径（classpath）中。
