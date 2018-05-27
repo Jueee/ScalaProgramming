@@ -18,3 +18,4 @@ actor  之间无须共享信息，通过交换消息的方式便可进行通信�
 
 伴生对象其实与下列代码生成的对象无异：
 <pre>def apply(x:Double=0.0, y:Double=0.0) = new Point(x,y)</pre>
+##### 定义 ShapesDrawingActor 类：[ShapesDrawingActor.scala](Shape.scala) #####
