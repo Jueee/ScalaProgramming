@@ -23,6 +23,8 @@ class ShapesDrawingActor extends Actor{
     * @return
     */
   override def receive: Receive = {
+    // 偏函数
+    // receive 方法会尝试将接收到的各条消息与这三个模式匹配表达式进行匹配，并执行最先被匹配上的表达式。
     case s:Shape =>     // 信息是 Shape 的一个实例
       s.draw(str => println(s"ShapesDrawingActor:$str"))    // 此匿名函数仅打印了生成的字符串
         sender ! Response(s"ShapesDrawingActor:$s drawn")   // 向 “ 发信方 ” 回复了一个消息

@@ -18,4 +18,21 @@ actor  之间无须共享信息，通过交换消息的方式便可进行通信�
 
 伴生对象其实与下列代码生成的对象无异：
 <pre>def apply(x:Double=0.0, y:Double=0.0) = new Point(x,y)</pre>
-##### 定义 ShapesDrawingActor 类：[ShapesDrawingActor.scala](Shape.scala) #####
+##### 定义 ShapesDrawingActor 类：[ShapesDrawingActor.scala](ShapesDrawingActor.scala) #####
+-   Scala  支持 嵌套导入 （ nesting import ），嵌套导入会限定这些值的作用域。
+-   Akka  确保了消息处理的顺序与接收顺序相同，而对于那些正在被处理的消息， Akka  保证不会有其他线程抢占该消息。因此，
+    使用 Akka  编写的消息处理代码天生具有线程安全的特性。
+-   偏函数实际类型是 PartialFunction[Any,Unit] ，这说明偏函数接受单一的 Any 类型参数并返回 Unit 值。 Any 是 Scala
+    类层次级别的根类，因此该函数可以接受任何参数。
+-   偏函数中仅包含了一些 case 子句，这些子句会对传递给函数的消息执行模式匹配。
+-   函数
+    式编程中的模式匹配的重要性和复杂度都要远超过大多数命令式语言中对应的 swith/case 语句。
+    
+假如某一方法只接受单一参数，你可以省略掉对象后的点号和参数周边的括号。
+下面两行代码是等价的：
+<pre>sender ! Response(s"ShapesDrawingActor: $s drawn")
+sender.!(Response(s"ShapesDrawingActor: $s drawn"))</pre>
+##### 定义 ShapesDrawingDriver 类：[ShapesDrawingDriver.scala](ShapesDrawingDriver.scala) #####
+-   由于所有的消息都是以异步的方式发送的，你可以看到驱动 actor  和绘图 actor  的消息交织在一起。
+-   处理消息的顺序与发送消息的顺序相同。
+-   运行多次应用程序，每次输出都会不同。
