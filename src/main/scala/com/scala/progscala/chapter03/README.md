@@ -18,10 +18,10 @@
 8.	[条件操作符](Course08ConditionalOperators.scala)   
 9.	[使用try、catch和final子句](Course09TryCatch.scala)   
 10.	[名字调用和值调用](Course10CallByName.scala)      
-11.	惰性赋值   
-12.	枚举   
-13.	可插入字符串   
-14.	Trait：Scala语言的接口和“混入”         
+11.	[惰性赋值](Course11LazyVal.scala)   
+12.	[枚举](Course12Enumerations.scala)   
+13.	[可插入字符串](Course13InterpolatedStrings.scala)   
+14.	[Trait：Scala语言的接口和“混入”](Course14Trait.scala)         
     
 #### 本章回顾 ####    
 -   掌握了一些强大的可用于定制 DSL 或操作数据的结构，比如说 for 推导式。
