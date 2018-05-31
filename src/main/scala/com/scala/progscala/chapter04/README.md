@@ -5,7 +5,7 @@
 #### 本章目录 ####
 1.	[简单匹配](Course01SimpleMatch.scala)   
 2.	[match 中的值、变量和类型](Course02Matches.scala)   
-3.	序列的匹配   
+3.	[序列的匹配](Course03MatchSequences.scala)   
 4.	元组的匹配   
 5.	case 中的 guard 语句   
 6.	case 类的匹配   
