@@ -6,18 +6,18 @@
 1.	[简单匹配](Course01SimpleMatch.scala)   
 2.	[match 中的值、变量和类型](Course02Matches.scala)   
 3.	[序列的匹配](Course03MatchSequences.scala)   
-4.	元组的匹配   
-5.	case 中的 guard 语句   
-6.	case 类的匹配   
+4.	[元组的匹配](Course04MatchTuples.scala)   
+5.	[case 中的 guard 语句](Course05GuardsInCase.scala)   
+6.	[case 类的匹配](Course06CaseClasses.scala)   
 6.1	unapply 方法   
 6.2	unapplySeq 方法   
-7.	可变参数列表的匹配   
-8.	正则表达式的匹配   
-9.	再谈 case 语句的变量绑定   
-10.	再谈类型匹配   
-11.	封闭继承层级与全覆盖匹配   
-12.	模式匹配的其他用法   
-13.	总结关于模式匹配的评价              
+7.	[可变参数列表的匹配](Course07MatchVariableArgument.scala)   
+8.	[正则表达式的匹配](Course08MatchRegEx.scala)   
+9.	[再谈 case 语句的变量绑定](Course09BindingVariables.scala)   
+10.	[再谈类型匹配](Course10TypeMatching.scala)   
+11.	[封闭继承层级与全覆盖匹配](Course11ExhaustiveMatches.scala)   
+12.	[模式匹配的其他用法](Course12MatchOtherUses.scala)   
+13.	[总结关于模式匹配的评价](Course13RemarksMatch.scala)              
     
 #### 本章回顾 ####    
 -   模式匹配是很多函数式语言之所以强大的标志。
