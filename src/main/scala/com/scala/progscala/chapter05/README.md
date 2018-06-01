@@ -18,11 +18,11 @@
 3.	[隐式转换](Course03ImplicitConversions.scala)   
 3.1	构建独有的字符串插入器   
 3.2	表达式问题   
-4.	类型类模式   
-5.	隐式所导致的技术问题   
-6.	隐式解析规则   
-7.	Scala  内置的各种隐式   
-8.	合理使用隐式                
+4.	[类型类模式](Course04TypeClass.scala)   
+5.	[隐式所导致的技术问题](Course05TechnicalIssues.scala)   
+6.	[隐式解析规则](Course06ResolutionRules.scala)   
+7.	[Scala  内置的各种隐式](Course07BuiltInImplicits.scala)   
+8.	[合理使用隐式](Course08WiseUseImplicits.scala)                
     
 #### 本章回顾 ####    
 -   深入学习了 Scala  语言中关于隐式的各种知识。

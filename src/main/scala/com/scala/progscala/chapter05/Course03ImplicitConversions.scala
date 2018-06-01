@@ -1,5 +1,7 @@
 package com.scala.progscala.chapter05
 
+import scala.util.parsing.json.JSONObject
+
 /**
   * 隐式转换
   *
@@ -8,12 +10,14 @@ package com.scala.progscala.chapter05
   * 假如你希望使用这一特性，你应该通过 import 语句 import scala.langage.implicitConversions 开启这一特性，你也可以使用全局的编译器选项 -language:implictConversions 开启该特性。
   *
   * 以下是编译器进行查找和使用转换方法时的查询规则。
-    (1)  假如调用的对象和方法成功通过了组合类型检查，那么类型转换不会被执行。
-    (2)  编译器只会考虑使用了 implicit 关键字的类和方法。
-    (3)  编译器只会考虑当前作用域内的隐式类，隐式方法，以及目标类型的伴生对象中定义的隐式方法（本文后续部分将讲讨论这种情况）。
-    (4)  隐式方法无法串行处理，我们无法通过一个中间类型，使用串行的隐式方法将起始类型转换成目标类型。
-         编译器执行隐式转换时只会考虑那些接受单一类型实例输入且返回目标类型实例的方法。
-    (5)  假如当前适用多条转换方法，那么将不会执行转换操作。编译器要求有且必须只有一条满足条件的隐式方法，以免产生二义性。
+  * (1)  假如调用的对象和方法成功通过了组合类型检查，那么类型转换不会被执行。
+  * (2)  编译器只会考虑使用了 implicit 关键字的类和方法。
+  * (3)  编译器只会考虑当前作用域内的隐式类，隐式方法，以及目标类型的伴生对象中定义的隐式方法（本文后续部分将讲讨论这种情况）。
+  * (4)  隐式方法无法串行处理，我们无法通过一个中间类型，使用串行的隐式方法将起始类型转换成目标类型。
+  * 编译器执行隐式转换时只会考虑那些接受单一类型实例输入且返回目标类型实例的方法。
+  * (5)  假如当前适用多条转换方法，那么将不会执行转换操作。编译器要求有且必须只有一条满足条件的隐式方法，以免产生二义性。
+  *
+  * 在不修改源代码的情况下扩展模块的期望被称为 表达式问题 （ expression problem ）。
   *
   */
 object Course03ImplicitConversions {
@@ -22,6 +26,9 @@ object Course03ImplicitConversions {
     example1
     example2
     example3
+    example4
+    example5
+    example6
   }
 
   /**
@@ -91,5 +98,56 @@ object Course03ImplicitConversions {
     println(s.reverse)
     println(s.capitalize)
     s.foreach(c => print(s"$c-"))
+    println()
+  }
+
+  /**
+    * 当编译器看到像 x"foo bar" 这样的表达式时，它会查找 scala.StringContext 中定义的 x 方法。
+    * 传递给 StringContext.apply 方法的参数其实是 ${...} 表达式中抽取出的各个部分。传递给 s 的参数则是抽取后的表达式。
+    */
+  def example4: Unit ={
+    val name = ("Buck","Trends")
+    println(s"Hello, ${name._1} ${name._2}")
+    // 上述代码可以被转换成：
+    println(StringContext("Hello, "," ","").s(name._1,name._2))
+  }
+
+  /**
+    * 编写一个能够将简单的 JSON  字符串转化为JSONObject 对象的插入器。
+    */
+  def example5: Unit ={
+    object Interpolators{
+      implicit class jsonForStringContext(val sc:StringContext){  // 限定隐式类的作用域，在对象内定义隐式类
+        def json(values: Any*): JSONObject = {
+          val keyRE = """^[\s{,]*(\S+):\s*""".r   // 从字符串片段中抽取 key  名称的正则表达式
+          val keys = sc.parts.map{
+            case keyRE(key) => key
+            case str => str
+          }
+          val kvs = keys zip values
+          JSONObject(kvs.toMap)
+        }
+      }
+    }
+    import Interpolators._
+    val name = "Dean Wampler"
+    val book = "Programming Scala, Second Edition"
+    val jsonobj = json"{name:$name,book:$book}"
+    println(jsonobj)
+  }
+
+  /**
+    * 就像拉链一样，集合中的 zip 方法能很方便地将两个集合中的值缝合在一起。
+    */
+  def example6: Unit ={
+    val keys = List(1,2,3,4)
+    val values = List("a","b","c")
+    val keysValues = keys zip values
+    println(keysValues)   // List((1,a), (2,b), (3,c))
+
+    val keys2 = List(1,2)
+    val values2 = List("a","b","c")
+    val keysValues2 = keys2 zip values2
+    println(keysValues2)   // List((1,a), (2,b))
   }
 }
