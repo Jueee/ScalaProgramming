@@ -23,6 +23,9 @@ object Course07DataStructures {
     content3
     content4
     content5
+    content6
+    content7
+    content8
   }
 
   /**
@@ -45,8 +48,8 @@ object Course07DataStructures {
     val list3 = "Programming" :: "Scala" :: Nil
     println(list3)  // List(Programming, Scala)
 
-    val list4 = "Peoplr" :: "shoule" :: "read" :: Nil
-    println(list4)  // List(Peoplr, shoule, read)
+    val list4 = "People" :: "shoule" :: "read" :: Nil
+    println(list4)  // List(People, shoule, read)
   }
 
   /**
@@ -61,16 +64,100 @@ object Course07DataStructures {
   }
 
   /**
-    *
+    * Seq 的构造方法是 +: 而不是 :: 。
+    * 当对伴随对象使用 Seq.apply 方法时，将创建出一个 List ，这是因为 Seq 只是一个特征，而不是具体的类。
     */
   def content4: Unit ={
-
+    println("---")
+    val seq1 = Seq("Programming","Scala")
+    println(seq1)   // List(Programming, Scala)
+    val seq2 = "People" +: "should" +: "read" +: seq1
+    println(seq2)   // List(People, should, read, Programming, Scala)
+    val seq3 = "Programming" +: "Scala" +: Seq.empty
+    println(seq3)   // List(Programming, Scala)
+    val seq4 = "People" +: "should" +: "read" +: Seq.empty
+    println(seq4)   // List(People, should, read)
+    val seq5 = seq4 ++ seq3
+    println(seq5)   // List(People, should, read, Programming, Scala)
   }
 
   /**
-    *
+    * 序列类型还定义了 :+ 和 +: 方法。
     */
   def content5: Unit ={
+    val seq1 = Seq("Programming","Scala")
+    println(seq1)   // List(Programming, Scala)
+    val seq2 = seq1 :+ "Rocks!"
+    println(seq2)   // List(Programming, Scala, Rocks!)
+  }
 
+  /**
+    * 也可以考虑用 immutable.Vector 代替 List
+    * 因为 immutable.Vector 的所有操作都是 O (1) （常数时间）
+    * 而 List 对于那些需要访问头部以外元素的操作，都需要 O (n )  操作。
+    */
+  def content6: Unit ={
+    println("---")
+    val vect1 = Vector("Programming","Scala")
+    println(vect1)   // Vector(Programming, Scala)
+    val vect2 = "People" +: "should" +: "read" +: vect1
+    println(vect2)   // Vector(People, should, read, Programming, Scala)
+    val vect3 = "Programming" +: "Scala" +: Vector.empty
+    println(vect3)   // Vector(Programming, Scala)
+    val vect4 = "People" +: "should" +: "read" +: Vector.empty
+    println(vect4)   // Vector(People, should, read)
+    val vect5 = vect4 ++ vect3
+    println(vect5)   // Vector(People, should, read, Programming, Scala)
+    // 能够以常数时间复杂度获取任意元素：
+    println(vect5(3)) // Programming
+  }
+
+  /**
+    * 映射表
+    * Scala  支持对映射表采用以下特殊的初始化语法
+    * 映射表与 map 方法有一定程度的类似，前者每个键都对应一个值，后者每个输入元素都产生一个输出元素。
+    */
+  def content7: Unit ={
+    val stateCapitals = Map(
+      "Alabama" -> "Montgomery",
+      "Alaska" -> "Juneau",
+      "Wycming" -> "Cheyenne"
+    )
+    println(stateCapitals)
+
+    val lengths = stateCapitals map {kv => (kv._1,kv._2.length)}
+    println(lengths)
+
+    val caps = stateCapitals map {case(k,v) => (k,v.toUpperCase)}
+    println(caps)
+
+    val stateCapitals2 = stateCapitals + (
+      "Virginia" -> "Richmond"
+    )
+    println(stateCapitals2)
+
+    val stateCapitals3 = stateCapitals2 + (
+      "New York" -> "Albany","Illinois" -> "Springfield"
+    )
+    println(stateCapitals3)
+  }
+
+  /**
+    * 集合
+    *
+    * 集合是无序集合类型的一个例子，所以集合不是序列。集合同样要求元素具有唯一性
+    */
+  def content8: Unit ={
+    val states = Set("Alabama","Alaska","Wyoming")
+    println(states)
+
+    val lengths = states map (st => st.length)
+    println(lengths)
+
+    val states2 = states + "Virginia"
+    println(states2)
+
+    val states3 = states2 + ("New York","Illinois")
+    println(states3)
   }
 }
