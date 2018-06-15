@@ -27,11 +27,11 @@
 7.2	映射表   
 7.3	集合   
 8.	遍历、映射、过滤、折叠与归约   
-8.1	遍历   
-8.2	映射   
-8.3	扁平映射   
-8.4	过滤   
-8.5	折叠与归约   
+8.1	[遍历](Course081Traversal.scala)   
+8.2	[映射](Course082Mapping.scala)   
+8.3	[扁平映射](Course083FlatMapping.scala)   
+8.4	[过滤](Course084Filtering.scala)   
+8.5	[折叠与归约](Course085FoldingReducing.scala)   
 9.	向左遍历与向右遍历   
 10.	组合器：软件最佳组件抽象   
 11.	关于复制              
