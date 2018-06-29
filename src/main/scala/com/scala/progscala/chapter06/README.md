@@ -32,11 +32,15 @@
 8.3	[扁平映射](Course083FlatMapping.scala)   
 8.4	[过滤](Course084Filtering.scala)   
 8.5	[折叠与归约](Course085FoldingReducing.scala)   
-9.	向左遍历与向右遍历   
-10.	组合器：软件最佳组件抽象   
-11.	关于复制              
+9.	[向左遍历与向右遍历](Course09Traversals.scala)   
+10.	[组合器：软件最佳组件抽象](Course10Combinators.scala)   
+11.	[关于复制](Course11Copies.scala)              
     
 #### 本章回顾 ####    
 -   讨论了函数式编程的基本概念，并指出它们对解决现代软件开发问题的重要性。
 -   学习了基本集合类型及其高阶函数和组合器如何产生简洁、强大的模块化代码。
    
+#### 拓展阅读 ####    
+-   Chris Okasaki  的 Purely Functional Data Structures。
+-   Richard Bird  的 Pearls of Functional Algorithm Design。
+-   Fethi Rabhi  和 Guy Lapalme  的 Algorithms: A Functional Programming Approach。
